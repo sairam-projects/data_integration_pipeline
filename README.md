@@ -1,52 +1,31 @@
+Project Name: Data Integration Pipeline
 
-Data Integration Pipeline
+Overview
+The Data Integration Pipeline is a FastAPI-based ETL (Extract, Transform, Load) system that processes employee data from multiple formats (JSON & CSV) and inserts it into a PostgreSQL database. This system ensures data validation, transformation, and structured storage while providing API endpoints to fetch and analyze the data efficiently.
 
-This project is a FastAPI-based data integration pipeline that extracts, transforms, validates, and inserts employee data from JSON and CSV sources into a PostgreSQL database. It follows a modular architecture with clean code separation.
+Purpose
+The main goal of this project is to automate the data ingestion process, ensuring that structured and unstructured data are stored efficiently while maintaining data integrity and consistency.
 
-Features
-Extract data from JSON and CSV files
-Validate data using a validation chain (type checks, null checks, etc.)
-Transform data and store extra fields in JSONB format
-Load structured and extra data into a PostgreSQL database
-FastAPI API to fetch, filter, and aggregate employee records
+Key Objectives
+Extract data from various structured (CSV) and semi-structured (JSON) sources.
 
-Project Structure
-data_integration_pipeline/
-│── app/
-│   ├── extraction/       # Extractors and validation logic
-│   ├── transformation/   # Data transformation logic
-│   ├── api/             # FastAPI routes
-│   ├── db/              # Database models & connection
-│── tests/                # Unit tests with pytest
-│── data/                 # Sample JSON/CSV files
-│── requirements.txt      # Required Python dependencies
-│── README.md             # Project documentation
-│── main.py               # Entry point for FastAPI app
+Validate data fields (e.g., type validation, null checks).
 
-Installation & Setup
-Clone the Repository
+Transform data to store common fields in structured columns and extra attributes in a JSONB column.
 
-git clone https://github.com/yourusername/data_integration_pipeline.git
-cd data_integration_pipeline
-Create a Virtual Environment
+Load the cleaned and structured data into a PostgreSQL database.
 
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install Dependencies
+Provide RESTful APIs to retrieve, filter, and analyze employee data.
 
-pip install -r requirements.txt
+Technologies Used
+Backend: FastAPI (Python)
 
-Set Up PostgreSQL Database
-Make sure PostgreSQL is installed and update the .env file with the correct credentials.
+Database: PostgreSQL (with JSONB support)
 
-Run the FastAPI Server
+ORM: SQLAlchemy
 
-uvicorn app.main:app --reload
-Access the API
- http://127.0.0.1:8000/docs for interactive API documentation.
+Testing: Pytest
 
-API Endpoints
-	• GET /employees → Fetch all employees
-	• GET /employees?department=HR → Filter by department
-	• POST /employees → Insert new employee data
-	• GET /employees/stats → Get aggregated insights
+Deployment: Uvicorn
+
+Version Control: Git & GitHub
